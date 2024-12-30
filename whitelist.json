@@ -1,6 +1,6 @@
 {
-    "steam_ids": [
-        "steam:11000010fa7c4dc",
-        "steam:11000010fa7c1ab"
-    ]
+  "steamHexIDs": [
+    "steam:110000123456789",
+    "steam:110000abcdef123"
+  ]
 }
