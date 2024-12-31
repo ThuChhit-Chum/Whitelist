@@ -1,1 +1,2 @@
 prop_ld_dstsign_01
+sm_prop_smug_hgrdoors_01
