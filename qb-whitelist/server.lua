@@ -1,4 +1,4 @@
-local whitelistURL = "https://github.com/ThuChhit-Chum/Fivem-Whitelist/blob/main/whitelist.json"
+local whitelistURL = "https://github.com/ThuChhit-Chum/Fivem-Whitelist/blob/main/qb-whitelist/whitelist.json"
 
 -- Function to fetch the whitelist from GitHub
 function FetchWhitelist(cb)
