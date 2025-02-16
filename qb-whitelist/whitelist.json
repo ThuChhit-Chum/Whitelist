@@ -1,6 +1,10 @@
 {
   "whitelisted": [
     {
+      "steam": "steam:110000160b2aa16",
+      "name": "Player123"
+    }
+    {
       "steam": "steam:110000123456789",
       "name": "Player123"
     }
