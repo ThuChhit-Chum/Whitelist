@@ -52,7 +52,7 @@ AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
         end
 
         if not isWhitelisted then
-            deferrals.done("You are not whitelisted on this server.")
+            deferrals.done("You are not whitelisted on this server. Please Register in Discord: https://discord.gg/WtPZWeuf8z")
         else
             print(("^2[Whitelist] Player %s (%s) has joined the server.^0"):format(playerName, steamHex))
             deferrals.done()
