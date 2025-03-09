@@ -1,61 +1,65 @@
-local whitelistURL = "https://github.com/ThuChhit-Chum/Fivem-Whitelist/blob/main/qb-whitelist/whitelist.json"
+local whitelistURL = "https://thuchhit-chum.github.io/Whitelist/qb-whitelist/whitelist.json"
 
--- Function to fetch the whitelist from GitHub
-function FetchWhitelist(cb)
+local whitelistedPlayers = {}
+
+-- Fetch the whitelist from the URL
+local function FetchWhitelist()
     PerformHttpRequest(whitelistURL, function(err, text, headers)
         if err == 200 then
             local data = json.decode(text)
             if data and data.whitelisted then
-                cb(data.whitelisted)
+                whitelistedPlayers = {}
+                for _, player in pairs(data.whitelisted) do
+                    whitelistedPlayers[player.steam] = player.name
+                end
+                print("^2[QB-Whitelist] Successfully updated whitelist from URL.^0")
             else
-                print("^1[Whitelist] Invalid whitelist format!^0")
-                cb({})
+                print("^1[QB-Whitelist] ERROR: Invalid JSON structure!^0")
             end
         else
-            print("^1[Whitelist] Failed to fetch whitelist from GitHub!^0")
-            cb({})
+            print("^1[QB-Whitelist] ERROR: Failed to fetch whitelist! HTTP Code: " .. err .. "^0")
         end
     end, "GET", "", { ["Content-Type"] = "application/json" })
 end
 
--- Event when player connects
-AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
-    local player = source
-    local identifiers = GetPlayerIdentifiers(player)
-    local steamHex = nil
+-- Check if a player is whitelisted
+AddEventHandler("playerConnecting", function(name, setCallback, deferrals)
+    local src = source
+    local identifiers = GetPlayerIdentifiers(src)
+    local steamIdentifier = nil
 
-    -- Get player's Steam Hex
-    for _, id in ipairs(identifiers) do
-        if string.sub(id, 1, 6) == "steam:" then
-            steamHex = id
+    -- Get the Steam identifier
+    for _, v in pairs(identifiers) do
+        if string.sub(v, 1, 6) == "steam:" then
+            steamIdentifier = v
             break
         end
     end
 
-    if not steamHex then
-        deferrals.done("You must have Steam open to join this server.")
+    deferrals.defer()
+    Wait(100) -- Give some time for the deferral message
+
+    if not steamIdentifier then
+        deferrals.done("🚫 [QB-Whitelist] You must have Steam open to join this server.")
         return
     end
 
-    -- Check whitelist
-    deferrals.defer()
-    FetchWhitelist(function(whitelistedPlayers)
-        local isWhitelisted = false
-        local playerName = nil
-
-        for _, playerData in ipairs(whitelistedPlayers) do
-            if playerData.steam == steamHex then
-                isWhitelisted = true
-                playerName = playerData.name
-                break
-            end
-        end
-
-        if not isWhitelisted then
-            deferrals.done("You are not whitelisted on this server. Please Register in Discord: https://discord.gg/WtPZWeuf8z")
-        else
-            print(("^2[Whitelist] Player %s (%s) has joined the server.^0"):format(playerName, steamHex))
-            deferrals.done()
-        end
-    end)
+    if whitelistedPlayers[steamIdentifier] then
+        print("^2[QB-Whitelist] Access granted: " .. name .. " (" .. steamIdentifier .. ")^0")
+        deferrals.done()
+    else
+        print("^1[QB-Whitelist] Access denied: " .. name .. " (" .. steamIdentifier .. ")^0")
+        deferrals.done("🚫 You are not whitelisted on this server. Please Register in Discord: https://discord.gg/WtPZWeuf8z and Contact an admin.")
+    end
 end)
+
+-- Update whitelist every 10 minutes
+CreateThread(function()
+    while true do
+        FetchWhitelist()
+        Wait(600000) -- 10 minutes
+    end
+end)
+
+-- Initial fetch on script start
+FetchWhitelist()
