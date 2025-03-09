@@ -33,7 +33,7 @@
       "name": "Mike Tyson"
     },
     {
-      "steam": "steam:11000016dadb281 ",
+      "steam": "steam:11000016dadb281",
       "name": "Chi Kaa"
     },
     {
@@ -115,7 +115,6 @@
     {
       "steam": "steam:11000016f327e24",
       "name": "HOUR POTATO"
-    },
-    
+    }
   ]
 }
