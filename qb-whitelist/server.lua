@@ -1,23 +1,23 @@
 local whitelistURL = "https://thuchhit-chum.github.io/Whitelist/qb-whitelist/whitelist.json"
 
-local whitelistedPlayers = {}
-
--- Fetch the whitelist from the URL
-local function FetchWhitelist()
+-- Function to fetch and return the whitelist
+local function FetchWhitelist(callback)
     PerformHttpRequest(whitelistURL, function(err, text, headers)
         if err == 200 then
             local data = json.decode(text)
             if data and data.whitelisted then
-                whitelistedPlayers = {}
+                local whitelist = {}
                 for _, player in pairs(data.whitelisted) do
-                    whitelistedPlayers[player.steam] = player.name
+                    whitelist[player.steam] = player.name
                 end
-                print("^2[QB-Whitelist] Successfully updated whitelist from URL.^0")
+                callback(whitelist)
             else
                 print("^1[QB-Whitelist] ERROR: Invalid JSON structure!^0")
+                callback(nil)
             end
         else
             print("^1[QB-Whitelist] ERROR: Failed to fetch whitelist! HTTP Code: " .. err .. "^0")
+            callback(nil)
         end
     end, "GET", "", { ["Content-Type"] = "application/json" })
 end
@@ -44,22 +44,14 @@ AddEventHandler("playerConnecting", function(name, setCallback, deferrals)
         return
     end
 
-    if whitelistedPlayers[steamIdentifier] then
-        print("^2[QB-Whitelist] Access granted: " .. name .. " (" .. steamIdentifier .. ")^0")
-        deferrals.done()
-    else
-        print("^1[QB-Whitelist] Access denied: " .. name .. " (" .. steamIdentifier .. ")^0")
-        deferrals.done("🚫 You are not whitelisted on this server. Please Register in Discord: https://discord.gg/WtPZWeuf8z and Contact an admin.")
-    end
+    -- Fetch the latest whitelist before allowing the player in
+    FetchWhitelist(function(whitelistedPlayers)
+        if whitelistedPlayers and whitelistedPlayers[steamIdentifier] then
+            print("^2[QB-Whitelist] Access granted: " .. name .. " (" .. steamIdentifier .. ")^0")
+            deferrals.done()
+        else
+            print("^1[QB-Whitelist] Access denied: " .. name .. " (" .. steamIdentifier .. ")^0")
+            deferrals.done("🚫 You are not whitelisted on this server. Please Register in Discord: https://discord.gg/WtPZWeuf8z and Contact an admin.")
+        end
+    end)
 end)
-
--- Update whitelist every 10 minutes
-CreateThread(function()
-    while true do
-        FetchWhitelist()
-        Wait(600000) -- 10 minutes
-    end
-end)
-
--- Initial fetch on script start
-FetchWhitelist()
