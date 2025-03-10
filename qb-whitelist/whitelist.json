@@ -1,120 +1,33 @@
 {
   "whitelisted": [
-    {
-      "steam": "steam:110000160b2aa16",
-      "name": "Dy Long"
-    },
-    {
-      "steam": "steam:11000016b4f1ed7",
-      "name": "Peak Mi"
-    },
-    {
-      "steam": "steam:1100001473d2334",
-      "name": "Xiao Wei"
-    },
-    {
-      "steam": "steam:11000016d98d67b",
-      "name": "Og Kouch"
-    },
-    {
-      "steam": "steam:11000011529af1f",
-      "name": "Jim Bei"
-    },
-    {
-      "steam": "steam:11000015baf96fa",
-      "name": "Khun Bern"
-    },
-    {
-      "steam": "steam:11000016e553a18",
-      "name": "Fii zento"
-    },
-    {
-      "steam": "steam:110000119e48b66",
-      "name": "Mike Tyson"
-    },
-    {
-      "steam": "steam:11000016dadb281",
-      "name": "Chi Kaa"
-    },
-    {
-      "steam": "steam:11000014a488ad4",
-      "name": "Sdeak Dei"
-    },
-    {
-      "steam": "steam:11000014bb5da43",
-      "name": "Ream Ke"
-    },
-    {
-      "steam": "steam:11000016989c858",
-      "name": "By Kok"
-    },
-    {
-      "steam": "steam:11000015d2f5c57",
-      "name": "Keo Veasna"
-    },
-    {
-      "steam": "steam:11000014aff8aca",
-      "name": "Fii Melo"
-    },
-    {
-      "steam": "steam:11000015cfb979c",
-      "name": "Tuy Muy"
-    },
-    {
-      "steam": "steam:11000014491afea",
-      "name": "Benry Be"
-    },
-    {
-      "steam": "steam:11000015cbc2cad",
-      "name": "LaCi MoNy"
-    },
-    {
-      "steam": "steam:11000015a9e37d5",
-      "name": "Kleang meng"
-    },
-    {
-      "steam": "steam:1100001419a419d",
-      "name": "RATI TO"
-    },
-    {
-      "steam": "steam:11000015e199f03",
-      "name": "Ya Smey"
-    },
-    {
-      "steam": "steam:11000015d7225d6",
-      "name": "Akira Kaisan"
-    },
-    {
-      "steam": "steam:11000015a987715",
-      "name": "Tin Kela"
-    },
-    {
-      "steam": "steam:11000015b676693",
-      "name": "Ly Nimo"
-    },
-    {
-      "steam": "steam:11000013c0b62b8",
-      "name": "Ching Chang"
-    },
-    {
-      "steam": "steam:011000015106b9de",
-      "name": "Le Cosoy"
-    },
-    {
-      "steam": "steam:1100001000056ba",
-      "name": "JROKSPEY JI"
-    },
-    {
-      "steam": "steam:11000016db57dd2",
-      "name": "Ya dom"
-    },
-    {
-      "steam": "steam:110000132c24c92",
-      "name": "EL Chapo"
-    },
-    {
-      "steam": "steam:11000016f327e24",
-      "name": "HOUR POTATO"
-    }
+    { "steam": "steam:110000160b2aa16", "name": "Dy Long" },
+    { "steam": "steam:11000016b4f1ed7", "name": "Peak Mi" },
+    { "steam": "steam:1100001473d2334", "name": "Xiao Wei" },
+    { "steam": "steam:11000016d98d67b", "name": "Og Kouch" },
+    { "steam": "steam:11000011529af1f", "name": "Jim Bei" },
+    { "steam": "steam:11000015baf96fa", "name": "Khun Bern" },
+    { "steam": "steam:11000016e553a18", "name": "Fii zento" },
+    { "steam": "steam:110000119e48b66", "name": "Mike Tyson" },
+    { "steam": "steam:11000016dadb281", "name": "Chi Kaa" },
+    { "steam": "steam:11000014a488ad4", "name": "Sdeak Dei" },
+    { "steam": "steam:11000014bb5da43", "name": "Ream Ke" },
+    { "steam": "steam:11000016989c858", "name": "By Kok" },
+    { "steam": "steam:11000015d2f5c57", "name": "Keo Veasna" },
+    { "steam": "steam:11000014aff8aca", "name": "Fii Melo" },
+    { "steam": "steam:11000015cfb979c", "name": "Tuy Muy" },
+    { "steam": "steam:11000014491afea", "name": "Benry Be" },
+    { "steam": "steam:11000015cbc2cad", "name": "LaCi MoNy" },
+    { "steam": "steam:11000015a9e37d5", "name": "Kleang Meng" },
+    { "steam": "steam:1100001419a419d", "name": "RATI TO" },
+    { "steam": "steam:11000015e199f03", "name": "Ya Smey" },
+    { "steam": "steam:11000015d7225d6", "name": "Akira Kaisan" },
+    { "steam": "steam:11000015a987715", "name": "Tin Kela" },
+    { "steam": "steam:11000015b676693", "name": "Ly Nimo" },
+    { "steam": "steam:11000013c0b62b8", "name": "Ching Chang" },
+    { "steam": "steam:011000015106b9de", "name": "Le Cosoy" },
+    { "steam": "steam:1100001000056ba", "name": "JROKSPEY JI" },
+    { "steam": "steam:11000016db57dd2", "name": "Ya Dom" },
+    { "steam": "steam:110000132c24c92", "name": "EL Chapo" },
+    { "steam": "steam:11000016f327e24", "name": "HOUR POTATO" }
   ]
 }
